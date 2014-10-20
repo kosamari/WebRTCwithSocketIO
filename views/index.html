@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebRTC Video Chat</title>  
+  <style>
+  body{
+    font-family: sans-serif;
+  }
+  #local, #remote{
+    width: 480px; 
+    height: 360px;
+    border: 1px solid;
+  }
+  #left, #right{
+    float: left;
+    padding-right:10px; 
+  }
+  p{
+    font-size: 18px;
+  }
+  button{
+    width: 130px;
+    height:50px;
+    font-size: 16px;
+    background-color:#A9A9A9;
+    border:hidden;
+  }
+  button:hover{
+    background-color:#9266CC;
+  }
+  </style>
+</head>
+<body>
+  <button id="videobtn" type="button" onclick="video()">Video Start</button>
+  <button id="connectbtn" type="button" onclick="connect()">Connect</button>
+  <div>
+    <div id="left">
+      <p>Local Video</p>
+      <video id="local" autoplay></video>
+    </div>
+    <div id="right">
+      <p>Remote Video</p>
+      <video id="remote" autoplay></video>
+    </div>
+  </div>
+
+  <script src="http://{{ip}}:{{port}}/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+  var socket = io.connect('http://{{ip}}:{{port}}/');
+  </script>
+  <script src="/client.js"></script>
+</body>
+</html>
